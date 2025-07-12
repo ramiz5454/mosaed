@@ -1,0 +1,319 @@
+/* --- Global Styles & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-dark: #12121c;
+    --bg-light: #1e1e2f;
+    --primary-accent: #8e44ad;
+    --secondary-accent: #3498db;
+    --text-light: #f0f0f0;
+    --text-dark: #a0a0b0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.background-gradient {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at 10% 20%, rgba(142, 68, 173, 0.3), transparent 40%),
+                radial-gradient(circle at 80% 90%, rgba(52, 152, 219, 0.3), transparent 40%);
+    z-index: -1;
+}
+
+/* --- Navigation Bar --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    width: 90%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+nav .nav-links a, .nav-links button {
+    color: var(--text-light);
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 400;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+nav .nav-links a:hover, nav .nav-links button:hover {
+    color: var(--secondary-accent);
+}
+
+/* --- Main Content & Containers --- */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 80px 20px 20px;
+}
+
+.hero { text-align: center; }
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+.hero p { font-size: 1.2rem; color: var(--text-dark); max-width: 600px; }
+
+/* --- Forms & Buttons (Glassmorphism) --- */
+.form-container, .tool-container, .results-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px; /* For auth forms */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.input-group { position: relative; margin-bottom: 25px; }
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-light);
+    font-size: 1rem;
+}
+.input-group input:focus {
+    outline: none;
+    border-color: var(--secondary-accent);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none; /* <-- هذا السطر هو الحل لإزالة الخط */
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 20px var(--primary-accent);
+    transform: translateY(-2px);
+}
+
+.form-link { text-align: center; margin-top: 20px; }
+.form-link a { color: var(--secondary-accent); text-decoration: none; }
+
+/* --- Tool Page Specifics --- */
+.tool-container { max-width: 900px; }
+.tool-container textarea {
+    width: 100%; height: 150px; resize: vertical;
+    padding: 15px; background: rgba(0,0,0,0.2);
+    border: 1px solid var(--glass-border); border-radius: 8px;
+    color: var(--text-light); font-size: 1rem; margin-bottom: 20px;
+}
+
+.upload-area {
+    border: 2px dashed var(--glass-border);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+.upload-area:hover { background-color: var(--glass-bg); }
+.upload-area p { margin: 0; color: var(--text-dark); }
+.upload-area p strong { color: var(--secondary-accent); }
+
+.or-divider {
+    text-align: center; color: var(--text-dark);
+    margin: 20px 0; font-weight: 600;
+}
+
+.results-container { margin-top: 30px; text-align: right; }
+.results-container h3 {
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-accent);
+    margin-bottom: 15px;
+}
+.results-container ul { padding-right: 20px; }
+.results-container li { margin-bottom: 10px; line-height: 1.6; }
+
+/* --- Utility --- */
+.hidden { display: none !important; }
+.error-msg {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff8a8a;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    nav { flex-direction: column; }
+    nav .nav-links { margin-top: 15px; }
+}
+
+/* --- New Additions to style.css --- */
+
+/* --- Navigation Bar Button --- */
+.btn-primary-nav {
+    padding: 8px 15px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    color: white !important;
+    transition: all 0.3s;
+}
+.btn-primary-nav:hover {
+    box-shadow: 0 0 15px var(--primary-accent);
+    transform: translateY(-2px);
+}
+
+
+/* --- Content Sections --- */
+.content-section {
+    padding: 80px 0;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    color: var(--text-light);
+}
+
+
+/* --- Features Section --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+.feature-card p {
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- Testimonials Section --- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background: var(--glass-bg);
+    border-left: 4px solid var(--secondary-accent);
+    border-radius: 0 8px 8px 0;
+    padding: 25px;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: var(--text-light);
+    margin: 0 0 15px 0;
+}
+
+.testimonial-card cite {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--secondary-accent);
+}
+
+/* --- Footer --- */
+.site-footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    color: var(--text-dark);
+    border-top: 1px solid var(--glass-border);
+}
+
+
+/* --- Scroll Animation Classes --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
